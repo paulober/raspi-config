@@ -1773,7 +1773,9 @@ do_boot_behaviour() {
       3>&1 1>&2 2>&3)
   else
     BOOTOPT=$1
-    true
+    if [ -n "$2" ]; then
+      USER=$2
+    fi
   fi
   if [ $? -eq 0 ]; then
     case "$BOOTOPT" in # Handle default target
